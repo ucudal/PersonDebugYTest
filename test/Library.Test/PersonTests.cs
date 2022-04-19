@@ -13,9 +13,39 @@ namespace Tests
         }
 
         [Test]
-        public void Test1() // Cambiá el nombre para indicar qué estás probando
+        public void NombreInvalidoPeroCedulaValida()
         {
-            // Insertá tu código  de pruebaaquí
+            Person p = new Person("", "5.118.426-3");
+
+            Assert.AreEqual(null, p.Name);
+            Assert.AreEqual("5.118.426-3", p.ID);
+        }
+        
+        [Test]
+        public void CedulaInvalidaPeroNombreValido()
+        {
+            Person p = new Person("Jorge", "347");
+            
+            Assert.AreEqual("Jorge", p.Name);
+            Assert.AreEqual(null, p.ID);
+        }
+        
+        [Test]
+        public void TodoInvalido()
+        {
+            Person p = new Person("", "347");
+            
+            Assert.AreEqual(null, p.Name);
+            Assert.AreEqual(null, p.ID);
+        }
+
+        [Test]
+        public void TodoValido()
+        {
+            Person p = new Person("Jorge", "5.118.426-3");
+            
+            Assert.AreEqual("Jorge", p.Name);
+            Assert.AreEqual("5.118.426-3", p.ID);
         }
     }
 }
